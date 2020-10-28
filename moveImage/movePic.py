@@ -63,24 +63,24 @@ def getPicFile(file):
         return single_txt_pics
 
 
-
-
-
 if __name__=="__main__":
     all_pic = []
+    all_dir =[]  #原始图片存放的路径
 
+    allMovePic = getPicFile("./pic.txt")  #获取txt中的文件路径
+    dstPath = "F:/pic/moveLast"        #建立存放移动的目录
+    if not (os.path.exists(dstPath)):  #判断一个文件是否存在 os.path.isdir()函数来判断路径是否为目录。
+        os.mkdir(dstPath)
 
-    all_pic = getPicFile("./pic.txt")
-
-    dstPath = "F:/pic/errorRecgnizeChar"
 
     # for single_dir in all_dir:
     #     all_pic+=getAllPicPath(single_dir)
+
     # print(len(all_pic))
 
 
 
-    movePic(all_pic,dstPath)
+    movePic(allMovePic,dstPath)
 
 
 
