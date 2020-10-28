@@ -54,7 +54,7 @@ def movePic(sourceList,dstPath):
 
 def getPicFile(file):
     
-    with open(file, 'r', encoding='gbk') as readFile:
+    with open(file, 'r', encoding='gbk') as readFile:  #按照gbk的编码来读取文件
     #with open(file, 'r', encoding='utf-8') as readFile:
         single_txt_pics = []
         for line in readFile.readlines():
@@ -75,10 +75,7 @@ if __name__=="__main__":
 
     # for single_dir in all_dir:
     #     all_pic+=getAllPicPath(single_dir)
-
     # print(len(all_pic))
-
-
 
     movePic(allMovePic,dstPath)
 
