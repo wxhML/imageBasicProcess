@@ -12,17 +12,14 @@ import re
 def rotate(
         img,  # 图片
         pt1, pt2, pt3, pt4,
-        newImagePath
+        NewImageName
 ):
-    print
-    pt1, pt2, pt3, pt4
+
     withRect = math.sqrt((pt4[0] - pt1[0]) ** 2 + (pt4[1] - pt1[1]) ** 2)  # 矩形框的宽度
     heightRect = math.sqrt((pt1[0] - pt2[0]) ** 2 + (pt1[1] - pt2[1]) ** 2)
-    print
-    withRect, heightRect
+
     angle = acos((pt4[0] - pt1[0]) / withRect) * (180 / math.pi)  # 矩形框旋转角度
-    print
-    angle
+
 
     if pt4[1] > pt1[1]:
         print
@@ -55,10 +52,10 @@ def rotate(
         pt1[0], pt3[0] = pt3[0], pt1[0]
 
     imgOut = imgRotation[int(pt2[1]):int(pt4[1]), int(pt1[0]):int(pt3[0])]
-    cv2.imshow("ss", imgOut)
+    cv2.imshow(NewImageName, imgOut)
     cv2.waitKey(0)
 
-    cv2.imwrite("./ss.jpg", imgOut)  # 裁减得到的旋转矩形框
+    cv2.imwrite("{}.jpg".format(NewImageName), imgOut)  # 裁减得到的旋转矩形框
     return imgRotation  # rotated image
 
 
@@ -71,7 +68,7 @@ def drawRect(img, pt1, pt2, pt3, pt4, color, lineWidth):
 
 
 # 　读出文件中的坐标值
-def ReadTxt(directory, imageName, last):
+def ReadTxt(directory, imageName, NewImageName):
     # fileTxt = last  # txt文件名
     # getTxt = open(fileTxt, 'r')  # 打开txt文件
     # lines = getTxt.readlines()
@@ -91,16 +88,17 @@ def ReadTxt(directory, imageName, last):
     pt4 = [707, 694]
     pt = [10,10]
     cv2.rectangle(imgSrc,(685,650),(707,694),(0,255,0),2)
-    cv2.imshow("ss",imgSrc)
-    cv2.waitKey(0)
+    # cv2.imshow(NewImageName,imgSrc)
+    # cv2.waitKey(0)
 
 
 
-    rotate(imgSrc, pt1, pt2, pt3, pt4, imageName)
+    rotate(imgSrc, pt1, pt2, pt3, pt4, NewImageName)
 
 
 if __name__ == "__main__":
     directory = "."
-    last = 'image_1210.txt'
-    imageName = "A0L098_18022.jpg"
-    ReadTxt(directory, imageName, last)
+    # last = 'image_1210.txt'
+    imageName = "car.jpg"
+    NewImageName  ="crop"
+    ReadTxt(directory, imageName, NewImageName)
