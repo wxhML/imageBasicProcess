@@ -1,5 +1,6 @@
 import os
 import shutil
+import glob
 import cv2
 
 # 符号	描述
@@ -31,6 +32,12 @@ def getAllPicPath(path):
             print("%s num %d"%(files_txt,len(single_txt_pics)))
     print("%s 总的 num %d"%(path,len(sigle_dir_pics)))
     return sigle_dir_pics
+def movpicName(sourceList,despath):
+    for filePath in sourceList:
+      if filePath.find("民航") != -1:
+        shutil.move(filePath,despath)
+        #shutil.copy(filePath,dstPath)
+        copyPic = os.listdir(despath)
 
 def movePic(sourceList,dstPath):
     num = 0
@@ -67,17 +74,19 @@ if __name__=="__main__":
     all_pic = []
     all_dir =[]  #原始图片存放的路径
 
-    allMovePic = getPicFile("./pic.txt")  #获取txt中的文件路径
-    dstPath = "F:/pic/moveLast"        #建立存放移动的目录
-    if not (os.path.exists(dstPath)):  #判断一个文件是否存在 os.path.isdir()函数来判断路径是否为目录。
-        os.mkdir(dstPath)
+    allList =glob.glob("F:/pic/大兴/*.jpg")
+    movpicName(allList,"F:/pic/大兴机场素材1")
 
-
-    # for single_dir in all_dir:
-    #     all_pic+=getAllPicPath(single_dir)
-    # print(len(all_pic))
-
-    movePic(allMovePic,dstPath)
+    # allMovePic = getPicFile("./pic.txt")  #获取txt中的文件路径
+    # dstPath = "F:/pic/moveLast"        #建立存放移动的目录
+    # if not (os.path.exists(dstPath)):  #判断一个文件是否存在 os.path.isdir()函数来判断路径是否为目录。
+    #     os.mkdir(dstPath)
+    #
+    # # for single_dir in all_dir:
+    # #     all_pic+=getAllPicPath(single_dir)
+    # # print(len(all_pic))
+    #
+    # movePic(allMovePic,dstPath)
 
 
 
