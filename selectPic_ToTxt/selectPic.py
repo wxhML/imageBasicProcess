@@ -20,4 +20,4 @@ def select(filepath,des):
 
 
 if __name__ == "__main__":
-    select("../result_daxin_modify.txt","")
+    select("../result_daxin_modify0.txt", "")
