@@ -10,7 +10,6 @@ def select(filepath,des):
                     flag = True
                     shutil.move(line.split("___")[-1][5:], "F:/pic/大兴/test/框错误")
 
-
             # if flag == True:
             #     if line.startswith("name:"):
             #         selectList.append(line[5:])
