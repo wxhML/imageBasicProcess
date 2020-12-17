@@ -58,6 +58,10 @@ def rotate(
     cv2.imwrite("{}.jpg".format(NewImageName), imgOut)  # 裁减得到的旋转矩形框
     return imgRotation  # rotated image
 
+    # index = 0
+    # cv2.imwrite("ac_aug_{}.jpg".format(index))
+    # index += 1
+
 
 # 　根据四点画原矩形
 def drawRect(img, pt1, pt2, pt3, pt4, color, lineWidth):

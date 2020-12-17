@@ -17,6 +17,5 @@ def select(filepath,des):
             #         flag = False
     print(len(selectList))
 
-
 if __name__ == "__main__":
     select("../result_daxin_modify0.txt", "")
